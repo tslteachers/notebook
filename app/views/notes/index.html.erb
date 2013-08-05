@@ -1,0 +1,22 @@
+<!-- <div id="todo_list"> -->
+  <ul>
+    <% @notes.each do |note| %>
+      <li>
+        <%= note.description %>
+        <%= link_to edit_note_url(note) do %>
+          <i class="icon-pencil"></i>
+        <% end %>
+        <%= link_to note_url(note), method: 'delete' do %>
+          <i class="icon-trash"></i>
+        <% end %>
+      </li>
+    <% end %>
+
+    <!-- WARM-UP:
+         Can you turn this input field into a proper form for
+         submitting new notes?
+     -->
+    <input placeholder="Add a new note here" size="50">
+
+  </ul>
+<!-- </div> -->
