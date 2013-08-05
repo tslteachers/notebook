@@ -2,6 +2,8 @@ class NotesController < ApplicationController
 
   def index
     @notes = Note.all
+
+    @user = User.find_by_id(session[:login_id])
   end
 
   def show

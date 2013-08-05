@@ -12,7 +12,8 @@ class SessionsController < ApplicationController
     if user
       if user.authenticate(params["password"])
         # We're signed in!
-        redirect_to root_url, notice: "Hi, #{user.name}"
+        session[:login_id] = user.id
+        redirect_to root_url
       else
         redirect_to sign_in_url, notice: "Bad username or password"
       end
@@ -21,4 +22,15 @@ class SessionsController < ApplicationController
     end
 
   end
+
+  def destroy
+    reset_session
+    redirect_to notes_url
+  end
+
+
+
+
+
+
 end

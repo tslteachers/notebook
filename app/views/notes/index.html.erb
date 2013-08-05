@@ -1,4 +1,4 @@
-<!-- <div id="todo_list"> -->
+<% if @user %>
   <ul>
     <% @notes.each do |note| %>
       <li>
@@ -18,4 +18,7 @@
       <!-- <input placeholder="Add a new note here" name="description" size="50"> -->
     <% end %>
   </ul>
-<!-- </div> -->
+<% else %>
+<h1>You should sign up!</h1>
+<% end %>
+
