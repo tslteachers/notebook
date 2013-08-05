@@ -1,5 +1,8 @@
 Todo::Application.routes.draw do
 
+  get "/sign_in" => 'sessions#new'    # sign_in_url
+  post "/sessions" => 'sessions#create'   # sessions_url
+
   # Routes for the User resource:
   # CREATE
   get '/users/new', controller: 'users', action: 'new', as: 'new_user'

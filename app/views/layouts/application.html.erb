@@ -19,7 +19,7 @@
           |
           <%= link_to "Sign Up", new_user_url %>
           |
-          <%= link_to "Sign In", '#' %>
+          <%= link_to "Sign In", sign_in_url %>
           |
           <%= link_to "Sign Out", '#' %>
 			</div>
@@ -28,6 +28,7 @@
           <i class="icon-paper-clip"></i>
         <% end %>
 				<%= link_to 'My Notebook', root_url %>
+        <p><%= flash[:notice] %></p>
 			</h1>
 		</header>
 
