@@ -12,11 +12,10 @@
       </li>
     <% end %>
 
-    <!-- WARM-UP:
-         Can you turn this input field into a proper form for
-         submitting new notes?
-     -->
-    <input placeholder="Add a new note here" size="50">
-
+    <%= form_tag "/notes" do %>
+      <%#= text_field_tag "description", placeholder: "Add a new note here" %>
+      <%= text_field_tag "description", "", :size => 50, :placeholder => "Add a new note here" %>
+      <!-- <input placeholder="Add a new note here" name="description" size="50"> -->
+    <% end %>
   </ul>
 <!-- </div> -->
