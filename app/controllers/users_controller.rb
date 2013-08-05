@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by_id(params[:id])
+    @current_user = User.find_by_id(session[:login_id])
   end
 
   def new

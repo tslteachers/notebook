@@ -1,9 +1,10 @@
 class NotesController < ApplicationController
 
   def index
-    @notes = Note.all
-
-    @user = User.find_by_id(session[:login_id])
+    @current_user = User.find_by_id(session[:login_id])
+    if @current_user != nil
+      @notes = @current_user.notes
+    end
   end
 
   def show
@@ -17,6 +18,7 @@ class NotesController < ApplicationController
   def create
     @note = Note.new
     @note.description = params[:description]
+    @note.user_id = session[:login_id]
 
     if @note.save
       redirect_to notes_url

@@ -29,8 +29,8 @@
         <% end %>
 				<%= link_to 'My Notebook', root_url %>
         <p><%= flash[:notice] %></p>
-        <% if @user %>
-          <p>Hi, <%= @user.name %></p>
+        <% if @current_user %>
+          <p>Hi, <%= @current_user.name %></p>
         <% end %>
 			</h1>
 		</header>
