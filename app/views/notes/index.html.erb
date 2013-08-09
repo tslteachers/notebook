@@ -1,12 +1,12 @@
 <% if @current_user %>
   <ul>
     <% @notes.each do |note| %>
-      <li>
+      <li id="note_<%= note.id %>">
         <%= note.description %>
         <%= link_to edit_note_url(note) do %>
           <i class="icon-pencil"></i>
         <% end %>
-        <%= link_to note_url(note), method: 'delete' do %>
+        <%= link_to note_url(note), remote: true, method: 'delete' do %>
           <i class="icon-trash"></i>
         <% end %>
       </li>

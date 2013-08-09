@@ -45,6 +45,15 @@ class NotesController < ApplicationController
   def destroy
     @note = Note.find_by_id(params[:id])
     @note.destroy
-    redirect_to notes_url
+
+    respond_to do |format|
+      format.html do
+        redirect_to notes_url
+      end
+      format.js do
+        # $("#note_9").slideUp();
+        render :js => '$("#note_' + @note.id.to_s + '").slideUp();'
+      end
+    end
   end
 end
