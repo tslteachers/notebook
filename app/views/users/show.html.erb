@@ -5,9 +5,10 @@
   <%= @user.name %>
 </p>
 
-<p>
-  <b>Password digest:</b>
-  <%= @user.password_digest %>
-</p>
-
+<% if @user.id == session[:login_id] %>
+  <p>
+    <b>Password digest:</b>
+    <%= @user.password_digest %>
+  </p>
+<% end %>
 

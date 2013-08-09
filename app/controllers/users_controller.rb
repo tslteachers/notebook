@@ -1,5 +1,16 @@
 class UsersController < ApplicationController
 
+  before_action :authorize_user, only: [:edit, :update, :destroy]
+
+  def authorize_user
+    @user = User.find_by_id(params[:id])
+    @current_user = User.find_by_id(session[:login_id])
+
+    if @user != @current_user
+      redirect_to root_url, notice: "Nice try!"
+    end
+  end
+
   def index
     @users = User.all
   end
@@ -20,6 +31,7 @@ class UsersController < ApplicationController
     @user.password_confirmation = params[:password_confirmation]
 
     if @user.save
+      session[:login_id] = @user.id
       redirect_to root_url
     else
       render 'new'
@@ -27,7 +39,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find_by_id(params[:id])
+      redirect_to root_url, notice: "Nice try!"
   end
 
   def update
@@ -43,7 +55,6 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find_by_id(params[:id])
     @user.destroy
     redirect_to users_url
   end
